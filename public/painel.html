@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel da equipe · Freijó</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#231912">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23231912'/%3E%3Cg fill='none' stroke='%23C8995A' stroke-width='2.4'%3E%3Ccircle cx='32' cy='32' r='8'/%3E%3Ccircle cx='32' cy='32' r='15'/%3E%3Ccircle cx='32' cy='32' r='22'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='3' fill='%237FB0D6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Figtree:wght@400;600&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="painel.css">
+</head>
+<body>
+
+<div class="login" id="login" hidden>
+  <form class="login-card" novalidate>
+    <span class="brand"><b>Freijó</b><span>Café e Padaria</span></span>
+    <h1>Painel da equipe</h1>
+    <p>Pedidos das mesas, retiradas no balcão e reservas de pão, tudo em um lugar.</p>
+    <label class="field"><span>Senha da equipe</span><input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="btn" type="submit">Entrar</button>
+    <p class="login-error" role="alert"></p>
+    <a class="back" href="/">Voltar ao site</a>
+  </form>
+</div>
+
+<div class="app" id="app" hidden>
+  <header class="top">
+    <span class="brand"><b>Freijó</b><span>Painel</span></span>
+    <span class="live" data-state="off"><i aria-hidden="true"></i><span class="live-text">Conectando</span></span>
+    <div class="top-actions">
+      <button class="chip sound" type="button" aria-pressed="true">Som ligado</button>
+      <button class="chip logout" type="button">Sair</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Seções do painel">
+    <button role="tab" type="button" data-tab="pedidos" aria-selected="true">Pedidos <span class="badge" hidden></span></button>
+    <button role="tab" type="button" data-tab="reservas" aria-selected="false">Reservas</button>
+    <button role="tab" type="button" data-tab="cardapio" aria-selected="false">Cardápio</button>
+  </nav>
+
+  <main>
+    <section class="tab" id="tab-pedidos" role="tabpanel">
+      <div class="stats">
+        <div><b data-stat="open">0</b><span>em aberto</span></div>
+        <div><b data-stat="today">0</b><span>pedidos hoje</span></div>
+        <div><b data-stat="revenue">R$ 0</b><span>vendido hoje</span></div>
+      </div>
+      <div class="board">
+        <section class="col" data-col="novo"><h2>Novos <span class="count">0</span></h2><div class="cards"></div><p class="empty">Nenhum pedido novo. Quando chegar, toca um sininho.</p></section>
+        <section class="col" data-col="preparando"><h2>Preparando <span class="count">0</span></h2><div class="cards"></div><p class="empty">Nada no preparo agora.</p></section>
+        <section class="col" data-col="pronto"><h2>Prontos <span class="count">0</span></h2><div class="cards"></div><p class="empty">Nenhum pedido esperando entrega.</p></section>
+      </div>
+      <details class="history">
+        <summary>Entregues e cancelados hoje <span class="count">0</span></summary>
+        <div class="cards"></div>
+      </details>
+    </section>
+
+    <section class="tab" id="tab-reservas" role="tabpanel" hidden>
+      <div class="res-head">
+        <div class="day-pick">
+          <button class="chip" type="button" data-day="today">Hoje</button>
+          <button class="chip" type="button" data-day="tomorrow">Amanhã</button>
+          <label class="date"><span class="sr-only">Outra data</span><input type="date"></label>
+        </div>
+        <h2 class="res-label"></h2>
+      </div>
+      <div class="bake">
+        <h3>Para separar</h3>
+        <ul class="bake-list"></ul>
+      </div>
+      <div class="res-list"></div>
+    </section>
+
+    <section class="tab" id="tab-cardapio" role="tabpanel" hidden>
+      <p class="hint">Marque o que acabou. Some do cardápio dos clientes na hora, e ninguém consegue pedir.</p>
+      <div class="menu-admin"></div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/motion@14.3.0/dist/motion.js"></script>
+<script src="painel.js"></script>
+</body>
+</html>

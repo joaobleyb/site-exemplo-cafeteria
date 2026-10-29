@@ -137,16 +137,16 @@
 
   <section class="s rv" id="cardapio" aria-labelledby="menu-t">
     <div class="menu-wrap">
-      <div class="s-head"><span class="kicker r">Cardápio</span><h2 id="menu-t" class="r">O que sai do forno hoje.</h2><p class="lede r">Não é o pão mais barato do bairro. É o que dura três dias sem endurecer.</p></div>
+      <div class="s-head"><span class="kicker r">Cardápio</span><h2 id="menu-t" class="r">O que sai do forno hoje.</h2><p class="lede r">Não é o pão mais barato do bairro. É o que dura três dias sem endurecer.</p><button class="btn ghost r" type="button" data-open-menu>Ver cardápio e pedir</button></div>
       <ul class="menu">
-        <li><span class="item">Pão de fermentação natural, inteiro</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 28</span></li>
-        <li><span class="item">Pão integral com sementes</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 32</span></li>
-        <li><span class="item">Pão de queijo da casa</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 6</span></li>
-        <li><span class="item">Croissant de manteiga</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 14</span></li>
-        <li><span class="item">Bolo de fubá com goiabada, fatia</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 12</span></li>
-        <li><span class="item">Café coado no pano</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 9</span></li>
-        <li><span class="item">Espresso</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 8</span></li>
-        <li><span class="item">Pingado na caneca de ágata</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 10</span></li>
+        <li><button type="button" class="menu-row" data-open-menu="paes"><span class="item">Pão de fermentação natural, inteiro</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 28</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="paes"><span class="item">Pão integral com sementes</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 32</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="salgados"><span class="item">Pão de queijo da casa</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 6</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="doces"><span class="item">Croissant de manteiga</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 14</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="doces"><span class="item">Bolo de fubá com goiabada, fatia</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 12</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="cafes"><span class="item">Café coado no pano</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 9</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="cafes"><span class="item">Espresso</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 8</span></button></li>
+        <li><button type="button" class="menu-row" data-open-menu="cafes"><span class="item">Pingado na caneca de ágata</span><span class="dots" aria-hidden="true"></span><span class="price">R$ 10</span></button></li>
       </ul>
     </div>
   </section>
@@ -180,10 +180,22 @@
 
   <section class="s rv" aria-labelledby="dep-t">
     <div class="s-head"><span class="kicker r">Quem volta sempre</span><h2 id="dep-t" class="sr-only">Depoimentos</h2></div>
-    <div class="quotes">
-      <blockquote class="quote r"><p>"O pão de queijo chega quente toda vez. Não sei como, mas chega."</p><footer>Beatriz, 29</footer></blockquote>
-      <blockquote class="quote r"><p>"Reservo o pão no domingo à noite e na segunda está lá, com meu nome."</p><footer>Carlos, 41</footer></blockquote>
-      <blockquote class="quote r"><p>"Fico duas horas com um café só e ninguém me olha torto."</p><footer>Helena, 34</footer></blockquote>
+    <div class="regulars">
+      <div class="quotes">
+        <blockquote class="quote r"><p>"O pão de queijo chega quente toda vez. Não sei como, mas chega."</p><footer>Beatriz, 29</footer></blockquote>
+        <blockquote class="quote r"><p>"Reservo o pão no domingo à noite e na segunda está lá, com meu nome."</p><footer>Carlos, 41</footer></blockquote>
+        <blockquote class="quote r"><p>"Fico duas horas com um café só e ninguém me olha torto."</p><footer>Helena, 34</footer></blockquote>
+      </div>
+      <aside class="loyal r" aria-labelledby="loyal-t">
+        <span class="loyal-tag">Freijó · nº 0214</span>
+        <h3 id="loyal-t">Cartão de quem volta</h3>
+        <ol class="stamps" aria-label="7 de 10 cafés carimbados">
+          <li class="on"></li><li class="on"></li><li class="on"></li><li class="on"></li><li class="on"></li>
+          <li class="on"></li><li class="on"></li><li></li><li></li><li class="gift">10º</li>
+        </ol>
+        <p class="loyal-lead">O décimo café é por nossa conta.</p>
+        <p class="loyal-note">Sem app, sem cadastro. É um cartão de papel, carimbado no balcão.</p>
+      </aside>
     </div>
   </section>
 
@@ -230,6 +242,7 @@
             </label>
           </div>
           <button class="btn" type="submit">Reservar meu pão</button>
+          <p class="form-error" role="alert"></p>
         </form>
         <p class="success" role="status">Reservado. Amanhã cedo ele sai do forno com o seu nome.</p>
       </div>
@@ -245,6 +258,125 @@
   </div>
   <a class="btn small" href="#reservar">Reservar meu pão</a>
 </footer>
+
+<dialog class="menu-modal" id="menu-modal" aria-labelledby="mm-title">
+  <div class="mm-sheet">
+    <header class="mm-head">
+      <div class="mm-brand"><b>Freijó</b><span class="mm-table" hidden></span></div>
+      <h2 id="mm-title">Cardápio</h2>
+      <button class="mm-close" type="button" aria-label="Fechar cardápio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </header>
+    <div class="mm-main">
+    <div class="mm-menu">
+    <p class="mm-offline" hidden>Os pedidos pelo site estão fora do ar agora. O cardápio continua aqui, e é só pedir no balcão.</p>
+    <nav class="mm-tabs" aria-label="Categorias">
+      <a href="#mm-paes" data-cat="paes">Pães</a>
+      <a href="#mm-salgados" data-cat="salgados">Salgados</a>
+      <a href="#mm-doces" data-cat="doces">Doces</a>
+      <a href="#mm-cafes" data-cat="cafes">Cafés</a>
+      <a href="#mm-bebidas" data-cat="bebidas">Bebidas</a>
+      <span class="mm-ink" aria-hidden="true"></span>
+    </nav>
+    <div class="mm-body">
+      <section class="mm-cat" id="mm-paes" data-cat="paes" aria-labelledby="mmh-paes">
+        <h3 id="mmh-paes">Pães <small>fermentação natural, 48 horas</small></h3>
+        <ul>
+          <li><div><b>Pão de fermentação natural, inteiro</b><p>Casca crocante, miolo aberto. Dura três dias sem endurecer.</p></div><span>R$ 28</span></li>
+          <li><div><b>Meio pão de fermentação natural</b><p>O mesmo pão, para quem mora sozinho.</p></div><span>R$ 15</span></li>
+          <li><div><b>Pão integral com sementes</b><p>Girassol, linhaça e gergelim.</p></div><span>R$ 32</span></li>
+          <li><div><b>Brioche da casa</b><p>Manteiga e ovos caipiras. Macio por dentro.</p></div><span>R$ 24</span></li>
+        </ul>
+      </section>
+      <section class="mm-cat" id="mm-salgados" data-cat="salgados" aria-labelledby="mmh-salgados">
+        <h3 id="mmh-salgados">Salgados <small>direto do forno</small></h3>
+        <ul>
+          <li><div><b>Pão de queijo da casa</b><p>Sai do forno a cada 30 minutos.</p></div><span>R$ 6</span></li>
+          <li><div><b>Pão na chapa</b><p>Fermentação natural e manteiga de verdade.</p></div><span>R$ 10</span></li>
+          <li><div><b>Torrada com ricota e mel</b><p>Ricota fresca, mel de flor de laranjeira.</p></div><span>R$ 18</span></li>
+          <li><div><b>Misto quente no brioche</b><p>Queijo minas padrão e presunto cozido.</p></div><span>R$ 22</span></li>
+        </ul>
+      </section>
+      <section class="mm-cat" id="mm-doces" data-cat="doces" aria-labelledby="mmh-doces">
+        <h3 id="mmh-doces">Doces <small>feitos aqui</small></h3>
+        <ul>
+          <li><div><b>Croissant de manteiga</b><p>Três dias de massa, folhado de verdade.</p></div><span>R$ 14</span></li>
+          <li><div><b>Bolo de fubá com goiabada, fatia</b><p>Receita de vó, goiabada cascão.</p></div><span>R$ 12</span></li>
+          <li><div><b>Rosca de canela</b><p>Fermentação natural e açúcar mascavo.</p></div><span>R$ 13</span></li>
+          <li><div><b>Pudim de leite, fatia</b><p>Sem furinho, com calda de caramelo.</p></div><span>R$ 14</span></li>
+        </ul>
+      </section>
+      <section class="mm-cat" id="mm-cafes" data-cat="cafes" aria-labelledby="mmh-cafes">
+        <h3 id="mmh-cafes">Cafés <small>torra média, coado na hora</small></h3>
+        <ul>
+          <li><div><b>Café coado no pano</b><p>Doce e encorpado, xícara por xícara.</p></div><span>R$ 9</span></li>
+          <li><div><b>Espresso</b><p>Curto e cremoso.</p></div><span>R$ 8</span></li>
+          <li><div><b>Pingado na caneca de ágata</b><p>Café coado com leite quente.</p></div><span>R$ 10</span></li>
+          <li><div><b>Cappuccino da casa</b><p>Só café, leite e espuma. Sem canela em pó.</p></div><span>R$ 14</span></li>
+        </ul>
+      </section>
+      <section class="mm-cat" id="mm-bebidas" data-cat="bebidas" aria-labelledby="mmh-bebidas">
+        <h3 id="mmh-bebidas">Bebidas</h3>
+        <ul>
+          <li><div><b>Chocolate quente</b><p>Cacau 50%, leite integral ou vegetal.</p></div><span>R$ 15</span></li>
+          <li><div><b>Suco de laranja</b><p>Espremido na hora.</p></div><span>R$ 12</span></li>
+          <li><div><b>Chá de capim-santo</b><p>Folhas frescas, sem saquinho.</p></div><span>R$ 8</span></li>
+        </ul>
+        <p class="mm-note">Leite vegetal sem custo extra. Pergunte no balcão qual é o pão do dia.</p>
+      </section>
+    </div>
+    </div>
+
+    <aside class="mm-cart" aria-labelledby="cart-t">
+      <div class="cart-view">
+        <div class="cart-top">
+          <button class="cart-back" type="button">Voltar ao cardápio</button>
+          <h3 id="cart-t">Seu pedido</h3>
+        </div>
+        <p class="cart-empty">Toque no + ao lado do que você quer. Aparece aqui.</p>
+        <ul class="cart-lines" aria-live="polite"></ul>
+        <form class="cart-form" novalidate>
+          <fieldset class="order-type">
+            <legend>Onde você está?</legend>
+            <label><input type="radio" name="type" value="mesa"><span>Na mesa</span></label>
+            <label><input type="radio" name="type" value="balcao" checked><span>Vou retirar no balcão</span></label>
+          </fieldset>
+          <div class="cart-fields">
+            <label class="field f-table"><span>Número da mesa</span><input name="table" type="number" inputmode="numeric" min="1" max="99" placeholder="Está escrito no QR code da mesa"></label>
+            <label class="field f-name"><span>Seu nome</span><input name="name" autocomplete="given-name" maxlength="40" placeholder="Para chamarmos quando ficar pronto"></label>
+            <label class="field"><span>Alguma observação?</span><input name="note" maxlength="200" placeholder="Ex.: café sem açúcar, pão bem tostado"></label>
+          </div>
+          <div class="cart-total"><span>Total</span><b class="cart-sum">R$ 0</b></div>
+          <p class="cart-pay">Você paga quando receber, no balcão ou na mesa.</p>
+          <button class="btn cart-send" type="submit">Enviar pedido</button>
+          <p class="cart-error" role="alert"></p>
+        </form>
+        <a class="cart-reserve" href="#reservar" data-close-menu>Quer pão para amanhã? Reserve aqui.</a>
+      </div>
+
+      <div class="track-view" hidden>
+        <span class="kicker">Pedido enviado</span>
+        <h3 class="track-num">Pedido nº <b></b></h3>
+        <p class="track-where"></p>
+        <ol class="track-steps">
+          <li data-s="novo"><i></i><span>Recebido</span></li>
+          <li data-s="preparando"><i></i><span>Preparando</span></li>
+          <li data-s="pronto"><i></i><span>Pronto</span></li>
+          <li data-s="entregue"><i></i><span>Entregue</span></li>
+        </ol>
+        <p class="track-msg" aria-live="polite"></p>
+        <ul class="track-items"></ul>
+        <div class="cart-total"><span>Total</span><b class="track-sum"></b></div>
+        <p class="cart-pay">Você paga quando receber, no balcão ou na mesa.</p>
+        <button class="btn ghost track-new" type="button">Fazer outro pedido</button>
+      </div>
+    </aside>
+    </div>
+
+    <footer class="mm-bar">
+      <button class="btn mm-bar-btn" type="button"><span class="bar-label">Ver meu pedido</span><span class="bar-sum"></span></button>
+    </footer>
+  </div>
+</dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/motion@14.3.0/dist/motion.js"></script>
 <script src="script.js"></script>
