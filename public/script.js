@@ -243,6 +243,14 @@
   addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
+  /* nav links: mark the section under the middle of the screen */
+  const navLinks = [...nav.querySelectorAll('ul a')];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    const a = navLinks.find(l => l.hash === '#' + e.target.id);
+    e.isIntersecting ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current');
+  }), { rootMargin: '-45% 0px -54% 0px' });
+  navLinks.forEach(a => spy.observe(document.querySelector(a.hash)));
+
   /* self-drawing grain lines and growth rings */
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
@@ -467,6 +475,54 @@
     document.getElementById('reservar').scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth' });
   });
   document.querySelectorAll('[data-open-menu]').forEach(b => b.addEventListener('click', () => openMenu(b.dataset.openMenu || null)));
+
+  /* side drawer: every section, the hours and the order button */
+  const side = document.getElementById('side');
+  const sidePanel = side.querySelector('.side-panel');
+  const burger = document.querySelector('.nav-burger');
+  const sideLinks = [...side.querySelectorAll('.side-nav a')];
+  let sideClosing = false;
+  function openSide() {
+    if (side.open) return;
+    const mark = scrollY + innerHeight / 3;
+    let cur = sideLinks[0];
+    for (const a of sideLinks) {
+      const t = document.querySelector(a.hash);
+      if (t && t.getBoundingClientRect().top + scrollY <= mark) cur = a;
+    }
+    sideLinks.forEach(a => a === cur ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+    document.documentElement.classList.add('modal-open');
+    side.showModal();
+    burger.setAttribute('aria-expanded', 'true');
+    if (canAnimate()) {
+      M.animate(sidePanel, { x: ['-100%', '0%'] }, { type: 'spring', bounce: 0.12, visualDuration: 0.45 });
+      M.animate(sideLinks, { opacity: [0, 1], x: [-24, 0] }, { type: 'spring', bounce: 0.2, visualDuration: 0.5, delay: M.stagger(0.04, { startDelay: 0.1 }) });
+    }
+  }
+  function sideClosed() {
+    if (!modal.open) document.documentElement.classList.remove('modal-open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+  async function closeSide() {
+    if (!side.open || sideClosing) return;
+    sideClosing = true;
+    if (canAnimate()) await M.animate(sidePanel, { x: '-100%' }, { duration: 0.22, ease: 'easeIn' });
+    side.close();
+    sideClosed();
+    if (motionOK) M.animate(sidePanel, { x: '0%' }, { duration: 0 });
+    sideClosing = false;
+  }
+  burger.addEventListener('click', openSide);
+  side.addEventListener('cancel', e => { e.preventDefault(); closeSide(); });
+  side.addEventListener('close', sideClosed);
+  side.addEventListener('click', e => { if (e.target === side) closeSide(); });
+  side.querySelector('.side-close').addEventListener('click', closeSide);
+  sideLinks.forEach(a => a.addEventListener('click', async e => {
+    e.preventDefault();
+    await closeSide();
+    document.querySelector(a.hash).scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth' });
+  }));
+  side.querySelector('[data-side-order]').addEventListener('click', async () => { await closeSide(); openMenu(); });
 
   /* menu from the server: live prices and sold-out items */
   const menuById = new Map();

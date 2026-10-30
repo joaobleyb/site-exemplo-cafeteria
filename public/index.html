@@ -23,14 +23,45 @@
 <div class="env" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Principal">
-  <a class="brand" href="#top"><b>Freijó</b><span>Café e Padaria</span></a>
+  <a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6"><ellipse cx="33" cy="32" rx="8" ry="7"/><ellipse cx="32" cy="32.5" rx="16" ry="14.5"/><path d="M32 8c13 0 24 10 24 24S45 57 31 57 8 46 8 32 19 8 32 8z"/></g><circle cx="33" cy="32" r="3" fill="var(--accent)"/></svg><b>Freijó</b><span>Café e Padaria</span></a>
   <ul>
     <li><a href="#cardapio">Cardápio</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#o-lugar">O lugar</a></li>
   </ul>
-  <a class="btn small" href="#reservar">Reservar meu pão</a>
+  <div class="nav-end">
+    <button class="nav-burger" type="button" aria-label="Abrir menu" aria-controls="side" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+  <svg class="nav-grain" viewBox="0 0 1600 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 5 C 200 1, 380 9, 600 5 S 1000 1, 1200 5 S 1500 9, 1600 4" fill="none" stroke="var(--grain)" stroke-width="1.2"/><path pathLength="1" d="M0 8 C 300 6, 700 10, 1000 8 S 1400 6, 1600 8" fill="none" stroke="var(--grain)" stroke-opacity=".35" stroke-width="1"/></svg>
 </nav>
+
+<dialog class="side" id="side" aria-labelledby="side-t">
+  <div class="side-panel">
+    <svg class="side-rings" viewBox="0 0 270 290" aria-hidden="true"><g fill="none" stroke="var(--grain)"><ellipse cx="206" cy="200" rx="22" ry="18"/><ellipse cx="203" cy="201" rx="48" ry="41"/><path d="M200 126c46 0 80 32 80 76s-36 74-82 74-78-32-78-76 34-74 80-74z"/><path d="M198 92c64 0 112 46 112 108s-50 106-114 106S86 260 86 198 134 92 198 92z"/><path d="M202 54c84 0 146 62 146 146s-66 146-150 146S50 282 50 200 118 54 202 54z"/><path d="M200 14c104 0 186 82 186 186s-84 188-190 188S12 302 12 198 96 14 200 14z"/></g></svg>
+    <div class="side-head">
+      <div class="brand"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6"><ellipse cx="33" cy="32" rx="8" ry="7"/><ellipse cx="32" cy="32.5" rx="16" ry="14.5"/><path d="M32 8c13 0 24 10 24 24S45 57 31 57 8 46 8 32 19 8 32 8z"/></g><circle cx="33" cy="32" r="3" fill="var(--accent)"/></svg><b>Freijó</b><span>Café e Padaria</span></div>
+      <h2 id="side-t" class="sr-only">Menu</h2>
+      <button class="mm-close side-close" type="button" aria-label="Fechar menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+    <nav class="side-nav" aria-label="Seções">
+      <ol>
+        <li><a href="#top"><small>01</small><span>Início</span></a></li>
+        <li><a href="#cardapio"><small>02</small><span>Cardápio</span></a></li>
+        <li><a href="#como-funciona"><small>03</small><span>Como funciona</span></a></li>
+        <li><a href="#o-lugar"><small>04</small><span>O lugar</span></a></li>
+        <li><a href="#quem-volta"><small>05</small><span>Quem volta sempre</span></a></li>
+        <li><a href="#duvidas"><small>06</small><span>Dúvidas</span></a></li>
+        <li><a href="#reservar"><small>07</small><span>Reservar meu pão</span></a></li>
+      </ol>
+    </nav>
+    <button class="btn side-order" type="button" data-side-order>Ver cardápio e pedir</button>
+    <ul class="facts side-facts">
+      <li>Seg a sáb, 7h às 19h</li>
+      <li>Domingo, 7h às 13h</li>
+      <li>Rua dos Ipês, 88, Belo Horizonte</li>
+    </ul>
+  </div>
+</dialog>
 
 <main id="main" tabindex="-1">
   <section class="hero" id="top" aria-label="Apresentação">
@@ -178,7 +209,7 @@
 
   <div class="divider" aria-hidden="true"><svg class="grain-line" viewBox="0 0 1600 16" preserveAspectRatio="none"><path d="M0 7 C 250 13, 520 3, 800 8 S 1300 14, 1600 6" fill="none" stroke="var(--grain)" stroke-width="1.2"/><path d="M0 10 C 400 6, 900 14, 1200 10 S 1500 7, 1600 9" fill="none" stroke="var(--grain)" stroke-opacity=".4" stroke-width="1"/></svg></div>
 
-  <section class="s rv" aria-labelledby="dep-t">
+  <section class="s rv" id="quem-volta" aria-labelledby="dep-t">
     <div class="s-head"><span class="kicker r">Quem volta sempre</span><h2 id="dep-t" class="sr-only">Depoimentos</h2></div>
     <div class="regulars">
       <div class="quotes">
